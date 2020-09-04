@@ -18,6 +18,10 @@ module.exports = {
         test: /\.js$/,
         loader: require.resolve('babel-loader'),
       },
+      {
+        test: /\.svg$/,
+        use: ['@svgr/webpack'],
+      },
     ],
   },
 };
