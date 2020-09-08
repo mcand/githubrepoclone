@@ -8,6 +8,7 @@ const Menu = ({ options }) => {
       <MenuItem key={idx} href="" active={option.active}>
         {option.icon}
         {option.name}
+        {option.count && <span className="counter">{option.count}</span>}
       </MenuItem>
     ));
 
@@ -23,6 +24,7 @@ Menu.propTypes = {
       name: PropTypes.string.isRequired,
       icon: PropTypes.element,
       active: PropTypes.bool,
+      count: PropTypes.number,
     })
   ),
 };

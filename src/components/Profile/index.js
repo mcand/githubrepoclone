@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { URL, CLIENT_ID, CLIENT_SECRET, USER } from '../../config';
+// import { URL, CLIENT_ID, CLIENT_SECRET, USER } from '../../config';
 import Avatar from '../Avatar';
 import UsersIcon from '../../assets/users.svg';
 import LocationIcon from '../../assets/location.svg';
 import EmailIcon from '../../assets/email.svg';
 import StarsIcon from '../../assets/stars.svg';
 import OrganizationList from '../OrganizationList';
+import PropTypes from 'prop-types';
 
 import {
   ProfileContainer,
@@ -16,30 +17,20 @@ import {
   FollowInfo,
   Location,
   Email,
+  Bio,
 } from './style';
-const Profile = () => {
-  const [userData, setUserData] = React.useState('');
-  const [starsLength, setStarsLength] = React.useState('');
-  const [organizations, setOrganizations] = React.useState('');
+const Profile = ({ userData }) => {
+  const [starsLength, setStarsLength] = useState('');
+  const [organizations, setOrganizations] = useState('');
 
   useEffect(() => {
-    axios
-      .get(
-        `${URL}/${USER}?client_id=${CLIENT_ID}&client_secret=${CLIENT_SECRET}`
-      )
-      .then(res => {
-        setUserData(res.data);
-      });
-  }, []);
-
-  useEffect(() => {
-    axios.get(`https://api.github.com/users/mcand/starred`).then(res => {
+    axios.get('https://api.github.com/users/mcand/starred').then(res => {
       setStarsLength(res.data.length);
     });
   }, []);
 
   useEffect(() => {
-    axios.get(`https://api.github.com/users/mcand/orgs`).then(res => {
+    axios.get('https://api.github.com/users/mcand/orgs').then(res => {
       setOrganizations(res.data);
     });
   }, []);
@@ -51,6 +42,7 @@ const Profile = () => {
         <FullName>{userData.name}</FullName>
         <AccountName>{userData.login}</AccountName>
       </h1>
+      <Bio>{userData.bio}</Bio>
       <SecondaryButton>Edit Profile</SecondaryButton>
       <FollowInfo>
         <a href="#">
@@ -78,6 +70,10 @@ const Profile = () => {
       <OrganizationList organizations={organizations} />
     </ProfileContainer>
   );
+};
+
+Profile.propTypes = {
+  userData: PropTypes.object.isRequired,
 };
 
 export default Profile;

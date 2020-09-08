@@ -1,9 +1,11 @@
 import styled from 'styled-components';
 
 export const ProfileContainer = styled.div`
-  margin-top: -30px;
-  width: 262px;
+  margin-top: 10px;
   padding: 0 16px;
+  z-index: 999;
+  width: 10%;
+  min-width: 280px;
   h1 {
     margin: 16px 0px;
   }
@@ -63,6 +65,17 @@ export const FollowInfo = styled.div`
   display: flex;
   align-items: center;
   font-size: 14px;
+  svg {
+    fill: #6a737d;
+    margin-right: 4px;
+  }
+
+  span {
+    &.separator {
+      margin: 0 4px;
+      padding-bottom: 6px;
+    }
+  }
   a {
     text-decoration: none;
     color: #586069;
@@ -76,17 +89,6 @@ export const FollowInfo = styled.div`
     span {
       font-weight: 600;
       margin-right: 4px;
-    }
-  }
-  svg {
-    fill: #6a737d;
-    margin-right: 4px;
-  }
-
-  span {
-    &.separator {
-      margin: 0 4px;
-      padding-bottom: 6px;
     }
   }
 `;
@@ -113,4 +115,10 @@ export const Email = styled.div`
     fill: #6a737d;
     margin-right: 4px;
   }
+`;
+
+export const Bio = styled.div`
+  font-size: 16;
+  color: #24292e;
+  margin-bottom: 16px;
 `;

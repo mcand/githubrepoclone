@@ -6,9 +6,7 @@ export const MenuContainer = styled.nav`
   color: #1b1f23;
   height: 48px;
   font-size: 14px;
-  border-bottom: 1px solid #e1e4e8;
   font-family: sans-serif;
-  justify-content: center;
 `;
 
 export const MenuItem = styled.a`
@@ -33,5 +31,18 @@ export const MenuItem = styled.a`
   svg {
     margin-right: 4px;
     fill: ${props => (props.active ? '#1b1f24ed' : '#959da5')};
+  }
+  span.counter {
+    margin-left: 4px;
+    min-width: 16px;
+    padding: 0 6px;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 18px;
+    color: #24292e;
+    text-align: center;
+    background-color: rgba(209, 213, 218, 0.5);
+    border: 1px solid transparent;
+    border-radius: 2em;
   }
 `;
